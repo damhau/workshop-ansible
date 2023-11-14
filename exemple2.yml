@@ -1,0 +1,17 @@
+---
+- name: install and start apache
+  hosts: localhost
+  connection: local
+  vars:
+    http_port: 80
+    max_clients: 200
+  become_user: root
+  tasks:
+    - name: install httpd
+      yum: pkg=httpd state=latest
+
+    - name: write the apache config file
+      template: src=httpd.j2 dest=/tmp/httpd.conf
+
+    - name: start httpd
+      service: name=httpd state=running

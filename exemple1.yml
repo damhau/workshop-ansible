@@ -1,0 +1,10 @@
+---
+- name: Echo
+  hosts: localhost
+  connection: local
+  gather_facts: yes
+
+  tasks:
+    - name: Print debug message
+      debug:
+        msg: Hello, world!

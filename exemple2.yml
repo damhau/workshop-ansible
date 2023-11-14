@@ -1,6 +1,6 @@
 ---
 - name: install and start apache
-  hosts: localhost
+  hosts: srv01
   connection: local
   vars:
     http_port: 80
@@ -8,10 +8,16 @@
   become_user: root
   tasks:
     - name: install httpd
-      yum: pkg=httpd state=latest
+      ansible.builtin.apt: pkg=httpd state=latest
+
+
+    - name: install httpd
+      apt: pkg=httpd state=latest
 
     - name: write the apache config file
       template: src=httpd.j2 dest=/tmp/httpd.conf
 
     - name: start httpd
       service: name=httpd state=running
+
+

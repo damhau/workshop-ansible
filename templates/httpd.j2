@@ -1,5 +1,10 @@
 server config
 
+hostname {{ inventory_hostname }}
+
 bind {{ http_port }}
 
 tcp connection max client {{ max_clients }}
+
+
+cpu core {{ ansible_processor_cores }}

@@ -2,6 +2,7 @@
 - name: install and start apache
   hosts: localhost
   connection: local
+  gather_facts: yes
   vars:
     http_port: 80
     max_clients: 200
@@ -15,5 +16,9 @@
     - name: write the apache config file     
       template: 
         src: templates/httpd.j2 
-        dest: tmp/httpd.conf
+        dest: /tmp/httpd.conf
 
+    - name: start httpd
+      service: 
+        name: httpd 
+        state: running

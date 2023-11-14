@@ -2,7 +2,7 @@ server config
 
 hostname {{ inventory_hostname }}
 
-bind {{ http_port }}
+bind {{ http_port | default("8080") }}
 
 tcp connection max client {{ max_clients }}
 

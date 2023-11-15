@@ -12,7 +12,7 @@
         validate_certs: false
         folder: ansible
         datacenter: OUT-SITE
-        name: test_vm_damien
+        name: testvmdamien
         template: template_debian12_ansible
         state: poweredon
         esxi_hostname: 10.220.211.101

@@ -12,9 +12,10 @@
         validate_certs: false
         folder: ansible
         datacenter: OUT-SITE
-        name: test_vm_damien
+        name: test_vm_damien_ssh
         template: template_debian12_ansible
         state: poweredon
+        guest_id: debian10_64Guest
         esxi_hostname: 10.220.211.101
         disk:
           - size_gb: 10
@@ -25,7 +26,7 @@
           num_cpus: 2
           scsi: paravirtual
         networks:
-          - name: "520"
+          - name: Production2
       delegate_to: localhost
       register: deploy_vm
 

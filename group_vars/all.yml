@@ -1,0 +1,2 @@
+vcenter_hostname: vcenter-cms.prd.mngt
+vcenter_username: administrator@vsphere.local

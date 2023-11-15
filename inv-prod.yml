@@ -1,0 +1,23 @@
+atlanta_dev:
+  hosts:
+    host1:
+      ansible_hostanme: host1.dns.local
+      var2: toto
+      http_port: 80
+    host2:
+      http_port: 8080
+  vars:
+    ntp_server: ntp.atlanta.example.com
+    proxy: proxy.atlanta.example.com
+
+atlanta_prod:
+  hosts:
+    host1:
+      ansible_hostanme: host1.dns.local
+      var2: toto
+      http_port: 80
+    host2:
+      http_port: 8080
+  vars:
+    ntp_server: ntp.atlanta.example.com
+    proxy: proxy.atlanta.example.com

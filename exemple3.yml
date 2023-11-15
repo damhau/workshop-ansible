@@ -1,0 +1,36 @@
+---
+- name: Deploy VM
+  hosts: localhost
+  connection: local
+  gather_facts: no
+
+  tasks:
+    - name: Create a virtual machine
+      community.vmware.vmware_guest:
+        hostname: vcenter-cms.prd.mngt
+        username: administrator@vsphere.local
+        password: "{{ vcenter_password }}"
+        validate_certs: false
+        folder: ansible
+        datacenter: OUT-SITE
+        name: test_vm_damien
+        state: poweredon
+        guest_id: centos64Guest
+        esxi_hostname: 10.220.211.101
+        disk:
+        - size_gb: 10
+          type: thin
+          datastore: OUT-SITE_TST
+        hardware:
+          memory_mb: 1024
+          num_cpus: 1
+          scsi: paravirtual
+        networks:
+        - name: Production2
+      delegate_to: localhost
+      register: deploy_vm
+
+
+    # - name: Print register VM
+    #   debug:
+    #     msg: "{{ deploy_vm }}"

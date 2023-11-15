@@ -30,3 +30,7 @@
       delegate_to: localhost
       register: deploy_vm
 
+
+    - name: Add all instance public IPs to dynamic host group
+      add_host: hostname={{ item.public_ip }} groups=vmwarehosts
+      with_items: "{{ deploy_vm.instances }}"

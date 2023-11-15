@@ -1,0 +1,13 @@
+---
+- name: install and start apache
+  hosts: atlanta_dev
+  gather_facts: yes
+  # vars:
+  #   http_port: 80
+  #   max_clients: 200
+  become: yes
+  tasks:
+    - name: install httpd
+      apt:
+        package: apache2
+        state: latest

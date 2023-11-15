@@ -29,3 +29,21 @@
       delegate_to: localhost
       register: deploy_vm
 
+    - name: Print debug message
+      debug:
+        msg: "{{ deploy_vm.instance['hw_eth0'].ipaddresses[0] }}"
+
+
+    - name: Add all instance public IPs to dynamic host group
+      add_host: hostname={{ item['hw_eth0'].ipaddresses[0] }} groups=vmwarehosts
+      with_items: "{{ deploy_vm.instances }}"
+
+- name: install and start apache
+  hosts: vmwarehosts
+  gather_facts: yes
+  become: yes
+  tasks:
+    - name: install httpd
+      apt:
+        package: apache2
+        state: latest

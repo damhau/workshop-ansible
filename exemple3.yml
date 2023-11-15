@@ -6,7 +6,7 @@
 
   tasks:
     - name: Create a virtual machine
-      community.vmware.vmware_guest:
+      vmware_guest:
         hostname: vcenter-cms.prd.mngt
         username: administrator@vsphere.local
         password: "{{ vcenter_password }}"

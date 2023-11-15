@@ -36,8 +36,11 @@
 
     - name: Add all instance public IPs to dynamic host group
       add_host: hostname={{ deploy_vm.instance['hw_eth0'].ipaddresses[0] }} groups=vmwarevms
+      register: inv
       
-      
+    - name: Print debug message
+      debug:
+        msg: "{{ inv }}" 
 
 - name: install and start apache
   hosts: vmwarevms

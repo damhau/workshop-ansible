@@ -6,9 +6,6 @@
   tasks:
     - name: Create a virtual machine
       vmware_guest:
-        hostname: "{{ vcenter_hostname }}"
-        username: "{{ vcenter_username }}"
-        password: "{{ vcenter_password }}"
         validate_certs: false
         folder: ansible
         datacenter: OUT-SITE
